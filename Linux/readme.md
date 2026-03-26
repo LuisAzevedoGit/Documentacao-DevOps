@@ -45,7 +45,6 @@ ls -la
 | head    | Primeiras linhas | head -n 10 file.txt        |
 | tail    | Últimas linhas   | tail -n 10 file.txt        |
 | grep    | Procurar texto   | grep "erro" file.txt       |
-| sort    | Ordenar linhas   | sort file.txt              |
 | cut     | Extrair colunas  | cut -d ":" -f1 /etc/passwd |
 
 ---
@@ -130,24 +129,3 @@ sudo apt remove nginx
 ```
 
 ---
-
-## 🧠 Conceitos Importantes
-
-* Linux domina ambientes cloud
-* Base essencial para DevOps
-* CLI permite automação eficiente
-
----
-
-## 🚀 Próximos Passos
-
-* Docker 🐳
-* AWS ☁️
-* CI/CD ⚙️
-* Automação (Bash/Python)
-
----
-
-## 💡 Nota Final
-
-Estas notas fazem parte do meu percurso para DevOps, focando nos conceitos e comandos mais utilizados no dia-a-dia.
