@@ -2,22 +2,21 @@
 📌 Introdução
 
 Docker é uma plataforma de virtualização leve que permite criar, executar e gerir aplicações em containers.
-Facilita a portabilidade, consistência entre ambientes e deploy de aplicações.
+Garante consistência entre ambientes e facilita o deploy.
 
 🧠 Conceitos Principais
-Image: Template imutável com tudo necessário para correr a app
+Image: Template com tudo necessário para correr a aplicação
 Container: Instância em execução de uma image
 Dockerfile: Ficheiro com instruções para criar uma image
-Volume: Persistência de dados fora do container
+Volume: Persistência de dados
 Network: Comunicação entre containers
 📦 Comandos Básicos
 Comando	Função	Exemplo
-docker --version	Ver versão	docker --version
 docker pull	Descarregar image	docker pull nginx
 docker images	Listar images	docker images
 docker run	Criar e correr container	docker run nginx
-docker ps	Listar containers ativos	docker ps
-docker ps -a	Listar todos os containers	docker ps -a
+docker ps	Containers ativos	docker ps
+docker ps -a	Todos os containers	docker ps -a
 docker stop	Parar container	docker stop <id>
 docker rm	Remover container	docker rm <id>
 docker rmi	Remover image	docker rmi nginx
@@ -26,28 +25,21 @@ Comando	Função	Exemplo
 docker run -d	Modo detached	docker run -d nginx
 docker run -p	Mapear portas	docker run -p 8080:80 nginx
 docker run --name	Nomear container	docker run --name web nginx
-docker run -v	Adicionar volume	docker run -v dados:/app nginx
 docker exec -it	Aceder ao container	docker exec -it web bash
 📄 Dockerfile
 
-Exemplo de Dockerfile simples:
+Exemplo simples:
 
-# Base image
 FROM node:18
 
-# Diretório de trabalho
 WORKDIR /app
 
-# Copiar ficheiros
 COPY . .
 
-# Instalar dependências
 RUN npm install
 
-# Expor porta
 EXPOSE 3000
 
-# Comando de arranque
 CMD ["npm", "start"]
 🧪 Exemplo Prático
 # Criar projeto
@@ -66,10 +58,10 @@ docker run -p 3000:3000 myapp
 # Ver logs
 docker logs <id>
 
-# Reiniciar container
+# Reiniciar
 docker restart <id>
 
-# Ver detalhes
+# Inspecionar
 docker inspect <id>
 💾 Volumes
 # Criar volume
@@ -79,8 +71,6 @@ docker volume create dados
 docker run -v dados:/app nginx
 🌐 Docker Compose
 
-Ferramenta para gerir múltiplos containers.
-
 Exemplo docker-compose.yml:
 
 version: "3"
@@ -89,18 +79,17 @@ services:
     image: nginx
     ports:
       - "8080:80"
-# Iniciar serviços
+# Iniciar
 docker-compose up -d
 
-# Parar serviços
+# Parar
 docker-compose down
 ⚠️ Nota
-Containers são efémeros (dados perdem-se sem volumes)
-Evitar correr containers como root
-Usar .dockerignore para otimizar builds
+Containers são efémeros
+Usar volumes para persistência
+Utilizar .dockerignore para otimizar builds
 🧠 Boas Práticas
-Usar images oficiais quando possível
-Manter Dockerfiles simples e otimizados
-Utilizar volumes para dados persistentes
-Versionar o docker-compose.yml
-Limpar containers/images não usados regularmente (docker system prune)
+Usar images oficiais
+Manter Dockerfiles simples
+Fazer cleanup com docker system prune
+Versionar o docker-compose
