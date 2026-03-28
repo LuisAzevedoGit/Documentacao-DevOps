@@ -1,8 +1,8 @@
 🔧 Docker Notes (DevOps Path)
 📌 Introdução
 
-Docker é uma plataforma de virtualização leve que permite criar, executar e gerir aplicações em containers.
-Garante consistência entre ambientes e facilita o deploy.
+Docker é uma plataforma que permite criar, executar e gerir aplicações em containers.
+Garante consistência entre ambientes e facilita o deployment.
 
 🧠 Conceitos Principais
 Image: Template com tudo necessário para correr a aplicação
@@ -11,25 +11,20 @@ Dockerfile: Ficheiro com instruções para criar uma image
 Volume: Persistência de dados
 Network: Comunicação entre containers
 📦 Comandos Básicos
-Comando	Função	Exemplo
-docker pull	Descarregar image	docker pull nginx
-docker images	Listar images	docker images
-docker run	Criar e correr container	docker run nginx
-docker ps	Containers ativos	docker ps
-docker ps -a	Todos os containers	docker ps -a
-docker stop	Parar container	docker stop <id>
-docker rm	Remover container	docker rm <id>
-docker rmi	Remover image	docker rmi nginx
+docker pull nginx          # Descarregar image
+docker images              # Listar images
+docker run nginx           # Criar e correr container
+docker ps                  # Containers ativos
+docker ps -a               # Todos os containers
+docker stop <id>           # Parar container
+docker rm <id>             # Remover container
+docker rmi nginx           # Remover image
 🏗️ Criar Containers
-Comando	Função	Exemplo
-docker run -d	Modo detached	docker run -d nginx
-docker run -p	Mapear portas	docker run -p 8080:80 nginx
-docker run --name	Nomear container	docker run --name web nginx
-docker exec -it	Aceder ao container	docker exec -it web bash
+docker run -d nginx                    # Modo detached
+docker run -p 8080:80 nginx           # Mapear portas
+docker run --name web nginx           # Nomear container
+docker exec -it web bash              # Aceder ao container
 📄 Dockerfile
-
-Exemplo simples:
-
 FROM node:18
 
 WORKDIR /app
@@ -42,54 +37,38 @@ EXPOSE 3000
 
 CMD ["npm", "start"]
 🧪 Exemplo Prático
-# Criar projeto
 mkdir docker-app
 cd docker-app
 
-# Criar ficheiros
 touch Dockerfile app.js
 
-# Build da image
 docker build -t myapp .
-
-# Correr container
 docker run -p 3000:3000 myapp
 🔄 Gestão de Containers
-# Ver logs
-docker logs <id>
-
-# Reiniciar
-docker restart <id>
-
-# Inspecionar
-docker inspect <id>
+docker logs <id>       # Ver logs
+docker restart <id>    # Reiniciar container
+docker inspect <id>    # Ver detalhes
 💾 Volumes
-# Criar volume
 docker volume create dados
 
-# Usar volume
 docker run -v dados:/app nginx
 🌐 Docker Compose
-
-Exemplo docker-compose.yml:
-
+docker-compose.yml
 version: "3"
 services:
   web:
     image: nginx
     ports:
       - "8080:80"
-# Iniciar
+Comandos
 docker-compose up -d
-
-# Parar
 docker-compose down
 ⚠️ Nota
 Containers são efémeros
 Usar volumes para persistência
-Utilizar .dockerignore para otimizar builds
+Utilizar .dockerignore
 🧠 Boas Práticas
 Usar images oficiais
 Manter Dockerfiles simples
-Fazer cleanup com docker system prune
+Limpar com docker system prune
 Versionar o docker-compose
