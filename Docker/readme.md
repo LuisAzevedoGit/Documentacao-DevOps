@@ -1,7 +1,9 @@
+Copia isto direto 👇
+
 🔧 Docker Notes (DevOps Path)
 📌 Introdução
 
-Docker é uma plataforma que permite criar, executar e gerir aplicações em containers. Garante consistência entre ambientes e facilita o deployment.
+Docker é uma plataforma de virtualização leve usada para criar, executar e gerir aplicações em containers, garantindo consistência entre ambientes.
 
 🧠 Conceitos Principais
 Image: Template com tudo necessário para correr a aplicação
@@ -14,29 +16,22 @@ Comando	Função	Exemplo
 docker pull	Descarregar image	docker pull nginx
 docker images	Listar images	docker images
 docker run	Criar e correr container	docker run nginx
-docker ps	Containers ativos	docker ps
-docker ps -a	Todos os containers	docker ps -a
+docker ps	Ver containers ativos	docker ps
+docker ps -a	Ver todos os containers	docker ps -a
 docker stop	Parar container	docker stop <id>
 docker rm	Remover container	docker rm <id>
-docker rmi	Remover image	docker rmi nginx
-🏗️ Criar Containers
+🌿 Gestão de Containers
 Comando	Função	Exemplo
-docker run -d	Modo detached	docker run -d nginx
-docker run -p	Mapear portas	docker run -p 8080:80 nginx
-docker run --name	Nomear container	docker run --name web nginx
+docker start	Iniciar container	docker start web
+docker restart	Reiniciar container	docker restart web
+docker logs	Ver logs	docker logs web
 docker exec -it	Aceder ao container	docker exec -it web bash
-📄 Dockerfile
-FROM node:18
-
-WORKDIR /app
-
-COPY . .
-
-RUN npm install
-
-EXPOSE 3000
-
-CMD ["npm", "start"]
+docker inspect	Ver detalhes	docker inspect web
+🌐 Imagens
+Comando	Função	Exemplo
+docker build	Criar image	docker build -t app .
+docker rmi	Remover image	docker rmi app
+docker tag	Tag de image	docker tag app v1
 🧪 Exemplo Prático
 # Criar projeto
 mkdir docker-app
@@ -50,36 +45,30 @@ docker build -t myapp .
 
 # Correr container
 docker run -p 3000:3000 myapp
-🔄 Gestão de Containers
+🔄 Alterações e Gestão
 # Ver logs
 docker logs <id>
 
-# Reiniciar container
-docker restart <id>
+# Parar container
+docker stop <id>
 
-# Ver detalhes
-docker inspect <id>
-💾 Volumes
+# Remover container
+docker rm <id>
+
+# Listar containers
+docker ps -a
+⏪ Volumes (Persistência)
 # Criar volume
 docker volume create dados
 
 # Usar volume
 docker run -v dados:/app nginx
-🌐 Docker Compose
-version: "3"
-services:
-  web:
-    image: nginx
-    ports:
-      - "8080:80"
-docker-compose up -d
-docker-compose down
 ⚠️ Nota
-Containers são efémeros
-Usar volumes para persistência
-Utilizar .dockerignore
+Containers são efémeros (dados perdem-se sem volumes)
+Images são imutáveis
+Usar .dockerignore para otimizar builds
 🧠 Boas Práticas
 Usar images oficiais
 Manter Dockerfiles simples
-Fazer limpeza com docker system prune
-Versionar o docker-compose
+Usar volumes para dados persistentes
+Limpar sistema com docker system prune
