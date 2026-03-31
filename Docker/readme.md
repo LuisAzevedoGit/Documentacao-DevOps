@@ -119,13 +119,13 @@ EXPOSE 3000
 # comando inicial
 CMD ["node", "app.js"]
 ```
-Resumo do que é feito:
-Selecionamos no docker hub a imagem base: node e a versao: 18-alpine.
-Mudamos o diretorio de trabalho /app
-Copiamos os ficheiros package.json para instalar as dependências.
-Após isso copiamos o restante codigo para o diretorio atual.
-Abrimos a porta 3000
-Definimos o comando de arranque do container usando CMD, que executa node app.js quando o container inicia.
+#### Resumo do que é feito:
+* Selecionamos no docker hub a imagem base: node e a versao: 18-alpine.
+* Mudamos o diretorio de trabalho /app
+* Copiamos os ficheiros package.json para instalar as dependências.
+* Após isso copiamos o restante codigo para o diretorio atual.
+* Abrimos a porta 3000
+* Definimos o comando de arranque do container usando CMD, que executa node app.js quando o container inicia.
 
 ## 🚀 Build e Run
 ```bash
