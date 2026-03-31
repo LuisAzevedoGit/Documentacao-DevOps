@@ -53,6 +53,27 @@ Docker é uma plataforma de virtualização leve usada para criar, executar e ge
 
 ---
 
+## 🔄 Alterações e Gestão
+
+```bash
+docker logs <id>
+docker stop <id>
+docker rm <id>
+docker ps -a
+```
+
+---
+
+## ⏪ Volumes (Persistência)
+
+```bash
+docker volume create dados
+docker run -v dados:/app nginx
+```
+
+---
+
+
 ## 🧪 Exemplo Prático
 ### Estrutura do projeto
 docker-app/
@@ -119,31 +140,9 @@ Por fim basta verificar no browser se está a correr:
 ---
 
 
-## 🔄 Alterações e Gestão
 
-```bash
-docker logs <id>
-docker stop <id>
-docker rm <id>
-docker ps -a
-```
 
----
 
-## ⏪ Volumes (Persistência)
-
-```bash
-docker volume create dados
-docker run -v dados:/app nginx
-```
-
----
-
-## ⚠️ Nota
-
-* Containers são efémeros (dados perdem-se sem volumes)
-* Images são imutáveis
-* Usar `.dockerignore`
 
 ---
 
