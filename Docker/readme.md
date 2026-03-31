@@ -111,11 +111,11 @@ docker run -p 3000:3000 myapp
 docker ps
 ```
 Explicação:
--t myapp → define o nome da imagem
--p 3000:3000 → mapeia porta host → container
+* -t myapp → define o nome da imagem
+* -p 3000:3000 → mapeia porta host → container
 
 Por fim basta verificar no browser se está a correr:
-http://localhost:3000
+* http://localhost:3000
 ---
 
 
