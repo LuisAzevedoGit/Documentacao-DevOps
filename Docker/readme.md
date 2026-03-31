@@ -77,11 +77,13 @@ docker run -v dados:/app nginx
 ## 🧪 Exemplo Prático
 ### Estrutura do projeto
 
+```bash
 docker-app/
+│
 ├── app.js
 ├── package.json
 └── Dockerfile
-
+```
 ### Codigo app.js
 ```javascript
 const http = require('http');
