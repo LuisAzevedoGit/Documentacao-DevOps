@@ -13,6 +13,7 @@ Docker é uma plataforma de virtualização leve usada para criar, executar e ge
 * **Dockerfile**: Ficheiro com instruções para criar uma image
 * **Volume**: Persistência de dados
 * **Network**: Comunicação entre containers
+* **Docker Hub**: Repositorio com imagens
 
 ---
 
