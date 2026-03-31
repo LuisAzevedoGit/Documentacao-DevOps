@@ -76,6 +76,7 @@ docker run -v dados:/app nginx
 
 ## 🧪 Exemplo Prático
 ### Estrutura do projeto
+
 docker-app/
 │
 ├── app.js
