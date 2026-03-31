@@ -54,18 +54,70 @@ Docker é uma plataforma de virtualização leve usada para criar, executar e ge
 ---
 
 ## 🧪 Exemplo Prático
+### Estrutura do projeto
+docker-app/
+│
+├── app.js
+├── package.json
+└── Dockerfile
 
-```bash
-mkdir docker-app
-cd docker-app
+### Codigo app.js
+```javascript
+const http = require('http');
 
-touch Dockerfile app.js
+const server = http.createServer((req, res) => {
+  res.end('Hello Docker!');
+});
 
-docker build -t myapp .
-docker run -p 3000:3000 myapp
+server.listen(3000, () => {
+  console.log('Server running on port 3000');
+});
 ```
+### Dockerfile
+```dockerfile
+# imagem base
+FROM node:18-alpine
 
+# diretório de trabalho
+WORKDIR /app
+
+# copiar ficheiros
+COPY package*.json ./
+
+# instalar dependências
+RUN npm install
+
+# copiar restante código
+COPY . .
+
+# expor porta
+EXPOSE 3000
+
+# comando inicial
+CMD ["node", "app.js"]
+```
+Resumo do que é feito:
+Selecionamos no docker hub a imagem base: node e a versao: 18-alpine.
+Mudamos o diretorio de trabalho /app
+Copiamos os ficheiros package.json para instalar as dependências.
+Após isso copiamos o restante codigo para o diretorio atual.
+Abrimos a porta 3000
+Definimos o comando de arranque do container usando CMD, que executa node app.js quando o container inicia.
+
+## 🚀 Build e Run
+```bash
+docker build -t myapp . 
+docker run -p 3000:3000 myapp
+docker ps
+```
+Explicação:
+-t myapp → define o nome da imagem
+-p 3000:3000 → mapeia porta host → container
+
+Por fim basta verificar no browser se está a correr:
+http://localhost:3000
 ---
+
 
 ## 🔄 Alterações e Gestão
 
