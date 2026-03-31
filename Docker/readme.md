@@ -78,7 +78,6 @@ docker run -v dados:/app nginx
 ### Estrutura do projeto
 
 docker-app/
-│
 ├── app.js
 ├── package.json
 └── Dockerfile
