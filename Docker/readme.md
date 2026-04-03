@@ -75,9 +75,9 @@ docker run -v dados:/app nginx
 ### 🔹 Estrutura:
 
 ```bash docker pull <imagem>:<versão>```
-✔️ Exemplo:
+✔️ Exemplo:  
 ```bash docker pull python:3.11.15-trixie```
-✔️ Última versão:
+✔️ Última versão:  
 ```bash docker pull python```
 Se não especificares versão → usa latest
 
