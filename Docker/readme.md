@@ -2,7 +2,7 @@
 
 ## 📌 Introdução
 
-Docker é uma plataforma de virtualização leve usada para criar, executar e gerir aplicações em containers, garantindo consistência entre ambientes.
+Docker é uma plataforma de containerização que permite empacotar aplicações e dependências garantindo consistência entre ambientes
 
 ---
 
@@ -192,8 +192,12 @@ Por fim basta verificar no browser se está a correr:
 
 
 
-
-
+---
+## 🔄 Workflow típico DevOps com Docker
+1. Escrever Dockerfile
+2. Build da imagem
+3. Push para registry
+4. Deploy do container
 
 ---
 
