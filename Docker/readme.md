@@ -98,9 +98,8 @@ Se não especificares versão → usa latest
 * docker ps -a    # todos os containers
 * docker images   # imagens locais
 
----
 
-## 📜 Logs
+### 📜 Logs
 * docker logs <container_id>
 
 ---
