@@ -70,7 +70,7 @@ docker ps -a
 docker volume create dados
 docker run -v dados:/app nginx
 ```
-
+---
 ## 📥 Pull de imagens
 ### 🔹 Estrutura:
 
@@ -80,7 +80,7 @@ docker run -v dados:/app nginx
 ✔️ Última versão:  
 ```bash docker pull python```  
 Se não especificares versão → usa latest
-
+---
 ## ▶️ Executar containers
 ### 🔹 Correr uma imagem:
 ```bash  docker run nginx```
@@ -96,7 +96,7 @@ Se não especificares versão → usa latest
 * docker images   # imagens locais
 ## 📜 Logs
 * docker logs <container_id>
-
+---
 
 ## 🌐 Port Binding 
 
@@ -113,7 +113,7 @@ Permite aceder ao container através da tua máquina.
 ```bash  docker run --name web-app -d -p 9000:80 nginx:1.23```
 
 👉 Evita usar IDs → mais fácil gerir
-
+---
 ## 🔁 Gerir containers existentes
 * docker start <id>
 * docker stop <id>
