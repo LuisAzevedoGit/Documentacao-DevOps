@@ -74,11 +74,11 @@ docker run -v dados:/app nginx
 ## 📥 Pull de imagens
 ### 🔹 Estrutura:
 
-```bash docker pull <imagem>:<versão>```
+```bash docker pull <imagem>:<versão>```  
 ✔️ Exemplo:  
-```bash docker pull python:3.11.15-trixie```
+```bash docker pull python:3.11.15-trixie```  
 ✔️ Última versão:  
-```bash docker pull python```
+```bash docker pull python```  
 Se não especificares versão → usa latest
 
 ## ▶️ Executar containers
