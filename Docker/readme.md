@@ -93,11 +93,10 @@ Se não especificares versão → usa latest
 ### 🔹 Modo detached (background):
 ```bash docker run -d nginx```
 -d → corre em background, não bloqueia terminal
-## 📊 Ver containers e imagens
+### 📊 Ver containers e imagens
 * docker ps       # containers ativos
 * docker ps -a    # todos os containers
 * docker images   # imagens locais
-
 
 ### 📜 Logs
 * docker logs <container_id>
