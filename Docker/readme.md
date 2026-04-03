@@ -191,8 +191,6 @@ Por fim basta verificar no browser se está a correr:
 ---
 
 
-
----
 ## 🔄 Workflow típico DevOps com Docker
 1. Escrever Dockerfile
 2. Build da imagem
