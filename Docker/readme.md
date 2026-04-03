@@ -71,6 +71,55 @@ docker volume create dados
 docker run -v dados:/app nginx
 ```
 
+## 📥 Pull de imagens
+### 🔹 Estrutura:
+
+```bash docker pull <imagem>:<versão>```
+✔️ Exemplo:
+```bash docker pull python:3.11.15-trixie```
+✔️ Última versão:
+```bash docker pull python```
+Se não especificares versão → usa latest
+
+## ▶️ Executar containers
+### 🔹 Correr uma imagem:
+```bash  docker run nginx```
+
+👉 Não precisas fazer pull antes — Docker faz automaticamente se não existir localmente.
+
+### 🔹 Modo detached (background):
+```bash docker run -d nginx```
+-d → corre em background, não bloqueia terminal
+## 📊 Ver containers e imagens
+* docker ps       # containers ativos
+* docker ps -a    # todos os containers
+* docker images   # imagens locais
+### 📜 Logs
+* docker logs <container_id>
+
+
+## 🌐 Port Binding 
+
+Permite aceder ao container através da tua máquina.
+
+```bash  docker run -d -p 9000:80 nginx:1.23```
+* 9000 → porta na tua máquina
+* 80 → porta dentro do container
+
+👉 Aceder via:
+
+```bash http://localhost:9000```
+## 🏷️ Nomear containers
+```bash  docker run --name web-app -d -p 9000:80 nginx:1.23```
+
+👉 Evita usar IDs → mais fácil gerir
+
+## 🔁 Gerir containers existentes
+* docker start <id>
+* docker stop <id>
+* docker rm <id>
+
+
 ---
 
 
