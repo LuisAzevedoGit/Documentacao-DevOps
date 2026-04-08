@@ -18,7 +18,7 @@ Os workflows ficam na pasta:
 .github/workflows/
 
 Exemplo de ficheiro:
-
+```yaml
 name: My First Workflow
 
 on: [push]
@@ -33,19 +33,15 @@ jobs:
 
       - name: Run script
         run: echo "Hello DevOps"
-🚀 Eventos (Triggers)
-Evento	Função	Exemplo
-push	Quando há push	on: push
-pull_request	Quando há PR	on: pull_request
-schedule	Execução agendada	cron job
-workflow_dispatch	Execução manual	botão no GitHub
+```
+## 🚀 Eventos (Triggers)
+* Evento	Função	Exemplo
+* push	Quando há push	on: push
+* pull_request	Quando há PR	on: pull_request
+* schedule	Execução agendada	cron job
+* workflow_dispatch	Execução manual	botão no GitHub
 
-👉 Exemplo:
-
-on:
-  push:
-    branches: [main]
-🧩 Jobs e Steps
+## 🧩 Jobs e Steps
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -56,7 +52,7 @@ jobs:
 
       - name: Step 2
         run: echo "World"
-🔄 Actions (Reutilização)
+## 🔄 Actions (Reutilização)
 
 Usar actions públicas:
 
@@ -69,7 +65,7 @@ Exemplo com Node.js:
   uses: actions/setup-node@v3
   with:
     node-version: '18'
-🌐 Variáveis e Secrets
+## 🌐 Variáveis e Secrets
 Variáveis:
 env:
   APP_NAME: myapp
@@ -104,7 +100,7 @@ jobs:
 
       - name: Run tests
         run: npm test
-🔄 Múltiplos Jobs
+## 🔄 Múltiplos Jobs
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -115,14 +111,14 @@ jobs:
 
 👉 needs garante ordem de execução
 
-⏱️ Agendamentos (Cron)
+## ⏱️ Agendamentos (Cron)
 on:
   schedule:
     - cron: "0 0 * * *"
 
 👉 Corre todos os dias à meia-noite
 
-⏪ Debug e Logs
+## ⏪ Debug e Logs
 
 Ver logs no GitHub:
 
@@ -132,13 +128,13 @@ Adicionar debug:
 
 - name: Debug
   run: echo "Debugging..."
-⚠️ Nota
-Workflows correm em ambientes temporários
-Tudo precisa ser instalado em cada execução
-Secrets nunca devem ser expostos em logs
-🧠 Boas Práticas
-Usar workflows pequenos e claros
-Separar jobs (build, test, deploy)
-Usar cache para acelerar builds
+## ⚠️ Nota
+* Workflows correm em ambientes temporários
+* Tudo precisa ser instalado em cada execução
+* Secrets nunca devem ser expostos em logs
+## 🧠 Boas Práticas
+* Usar workflows pequenos e claros
+* Separar jobs (build, test, deploy)
+* Usar cache para acelerar builds
 Nunca hardcode secrets
 Testar workflows em branches antes de usar na main
