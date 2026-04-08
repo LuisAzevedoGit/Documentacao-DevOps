@@ -1,9 +1,9 @@
-⚙️ GitHub Actions Notes (DevOps Path)
-📌 Introdução
+# ⚙️ GitHub Actions Notes (DevOps Path)
+## 📌 Introdução
 
 GitHub Actions é uma ferramenta de CI/CD integrada no GitHub que permite automatizar workflows como build, testes e deploy diretamente no repositório.
 
-🧠 Conceitos Principais
+## 🧠 Conceitos Principais
 
 Workflow: Processo automatizado (ex: build + deploy)
 Job: Conjunto de passos executados no mesmo ambiente
@@ -11,7 +11,7 @@ Step: Tarefa individual dentro de um job
 Action: Bloco reutilizável (plugin)
 Runner: Máquina onde o workflow corre
 
-📦 Estrutura Básica
+## 📦 Estrutura Básica
 
 Os workflows ficam na pasta:
 
