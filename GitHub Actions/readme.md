@@ -135,10 +135,11 @@ jobs:
 👉 needs garante ordem de execução
 
 ## ⏱️ Agendamentos (Cron)
+```yaml
 on:
   schedule:
     - cron: "0 0 * * *"
-
+```
 👉 Corre todos os dias à meia-noite
 
 ## ⏪ Debug e Logs
@@ -152,7 +153,7 @@ Debug:
 
 
 
-# 🚀 Exemplo Completo de GitHub Actions (Node.js + Docker + Deploy)
+## 🚀 Exemplo Completo de GitHub Actions (Node.js + Docker + Deploy)
 
 ```yaml
 name: Full DevOps Workflow
