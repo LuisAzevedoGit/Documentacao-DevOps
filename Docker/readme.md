@@ -155,38 +155,33 @@ server.listen(3000, () => {
 ### Dockerfile
 ```dockerfile
 # imagem base
-FROM node:18-alpine
+FROM node:25-alpine3.22
+
+# copiar ficheiros
+COPY package.json /app/
+
+#COPY src /app/
 
 # diretório de trabalho
 WORKDIR /app
 
-# copiar ficheiros
-COPY package*.json ./
-
 # instalar dependências
 RUN npm install
-
-# copiar restante código
-COPY . .
-
-# expor porta
-EXPOSE 3000
 
 # comando inicial
 CMD ["node", "app.js"]
 ```
 #### Resumo do que é feito:
-* Selecionamos no docker hub a imagem base: node e a versao: 18-alpine.
-* Mudamos o diretorio de trabalho /app
+* Selecionamos no docker hub a imagem base: node e a versao.
 * Copiamos os ficheiros package.json para instalar as dependências.
 * Após isso copiamos o restante codigo para o diretorio atual.
-* Abrimos a porta 3000
+* Mudamos o diretorio de trabalho /app
 * Definimos o comando de arranque do container usando CMD, que executa node app.js quando o container inicia.
 
 ## 🚀 Build e Run
 ```bash
 docker build -t myapp . 
-docker run -p 3000:3000 myapp
+docker run -d -p 3000:3000 myapp
 docker ps
 ```
 Explicação:
