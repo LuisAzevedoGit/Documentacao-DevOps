@@ -30,8 +30,8 @@ ls -la
 | mkdir   | Criar diretório          | mkdir pasta       |
 | rmdir   | Remover diretório vazio  | rmdir pasta       |
 | rm      | Remover ficheiros/pastas | rm -r pasta       |
-| cp      | Copiar ficheiros         | cp a.txt b.txt    |
-| mv      | Mover/renomear           | mv a.txt novo.txt |
+| cp      | Copiar ficheiros         | cp a.txt path/pasta|
+| mv      | Mover/renomear           | mv a.txt path/pasta |
 | touch   | Criar ficheiro           | touch file.txt    |
 
 ---
