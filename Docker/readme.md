@@ -26,8 +26,8 @@ Docker é uma plataforma de containerização que permite empacotar aplicações
 | docker run    | Criar e correr container | docker run nginx  |
 | docker ps     | Ver containers ativos    | docker ps         |
 | docker ps -a  | Ver todos os containers  | docker ps -a      |
-| docker stop   | Parar container          | docker stop <id>  |
-| docker rm     | Remover container        | docker rm <id>    |
+| docker stop   | Parar container          | docker stop ps id  |
+| docker rm     | Remover container        | docker rm ps id   |
 
 ---
 
@@ -35,8 +35,8 @@ Docker é uma plataforma de containerização que permite empacotar aplicações
 
 | Comando         | Função              | Exemplo                  |
 | --------------- | ------------------- | ------------------------ |
-| docker start    | Iniciar container   | docker start web         |
-| docker restart  | Reiniciar container | docker restart web       |
+| docker start    | Iniciar container   | docker start web        |
+| docker restart  | Reiniciar container | docker restart web      |
 | docker logs     | Ver logs            | docker logs web          |
 | docker exec -it | Aceder ao container | docker exec -it web bash |
 | docker inspect  | Ver detalhes        | docker inspect web       |
