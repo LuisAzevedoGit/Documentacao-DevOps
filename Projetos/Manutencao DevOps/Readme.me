@@ -8,7 +8,7 @@ O foco não é apenas a aplicação, mas todo o ciclo DevOps:
 Build
 Test
 Deploy
-Infraestrutura como código
+
 🧠 Tecnologias utilizadas
 Node.js → Backend da aplicação
 MySQL → Base de dados
@@ -46,7 +46,6 @@ edição
 anexos
 ordens de trabalho
 
-(opcional futuro → testes automáticos)
 
 3️⃣ Containerização (Docker)
 
@@ -57,10 +56,6 @@ Objetivo:
 Garantir portabilidade
 Facilitar deploy
 
-Exemplo do que vais ter:
-
-Dockerfile
-docker-compose (opcional com MySQL)
 4️⃣ Pipeline CI/CD (GitHub Actions)
 
 Automatizar:
@@ -95,10 +90,8 @@ Opções:
 Docker numa EC2
 ECS (mais avançado)
 Elastic Beanstalk (opcional)
-7️⃣ Monitorização (opcional mas forte para nota 💪)
-Logs (CloudWatch)
-Métricas
-Alertas
+
+
 🏗️ Arquitetura final (visão geral)
 GitHub
    ↓
@@ -109,16 +102,3 @@ Docker Image (Registry)
 AWS
  ├── EC2 (App Node.js)
  └── RDS (MySQL)
-🚀 Próximos passos (o que te recomendo fazer já)
-Criar Dockerfile
-Criar pipeline básico (build + docker)
-Subir imagem para Docker Hub
-Criar EC2 manualmente
-Correr container lá dentro
-Depois → Terraform para automatizar tudo
-💡 Melhorias futuras
-Autenticação com JWT (já tens base)
-Testes automatizados (Jest)
-Load balancer (ALB)
-HTTPS (Let's Encrypt ou ACM)
-Escalabilidade (ECS / Kubernetes)
