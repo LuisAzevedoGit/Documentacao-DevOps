@@ -1,0 +1,124 @@
+☁️ Projeto Checklist de Manutenção (DevOps Path)
+📌 Introdução
+
+Este projeto tem como objetivo implementar um pipeline CI/CD completo para uma aplicação de gestão de manutenção industrial desenvolvida para a empresa Tesco – Componentes para Automóveis.
+
+O foco não é apenas a aplicação, mas todo o ciclo DevOps:
+
+Build
+Test
+Deploy
+Infraestrutura como código
+🧠 Tecnologias utilizadas
+Node.js → Backend da aplicação
+MySQL → Base de dados
+GitHub Actions → Pipeline CI/CD
+Docker → Containerização da aplicação
+Terraform → Infraestrutura como código
+AWS → Cloud para deploy
+🧱 Aplicação Checklist de Manutenção
+📖 Contexto
+
+A aplicação foi desenvolvida para resolver a necessidade de digitalização dos processos de manutenção industrial.
+
+🎯 Objetivo
+
+Permitir:
+
+Registo de checklists de manutenção
+Gestão de ações corretivas
+Criação de ordens de trabalho
+Acompanhamento de intervenções
+⚙️ Arquitetura atual
+Backend: Node.js (Express)
+Base de dados: MySQL
+Frontend: HTML + CSS + JS (estático)
+📦 Fases do projeto DevOps
+1️⃣ Desenvolvimento do software
+Implementação da aplicação
+Estrutura backend + frontend
+Ligação à base de dados
+2️⃣ Testes funcionais
+Testes manuais da aplicação
+Validação de:
+criação de checklists
+edição
+anexos
+ordens de trabalho
+
+(opcional futuro → testes automáticos)
+
+3️⃣ Containerização (Docker)
+
+Criar um container para a aplicação:
+
+Objetivo:
+
+Garantir portabilidade
+Facilitar deploy
+
+Exemplo do que vais ter:
+
+Dockerfile
+docker-compose (opcional com MySQL)
+4️⃣ Pipeline CI/CD (GitHub Actions)
+
+Automatizar:
+
+Build da aplicação
+Build da imagem Docker
+Push para registry (Docker Hub ou ECR)
+
+Pipeline típico:
+
+Push no GitHub
+Build
+Testes (futuro)
+Build Docker
+Push da imagem
+5️⃣ Infraestrutura como Código (Terraform)
+
+Criar infraestrutura na AWS:
+
+Possível setup:
+
+EC2 (para correr container)
+RDS (MySQL)
+Security Groups
+VPC
+6️⃣ Deploy na AWS
+
+Deploy automático da aplicação:
+
+Opções:
+
+Docker numa EC2
+ECS (mais avançado)
+Elastic Beanstalk (opcional)
+7️⃣ Monitorização (opcional mas forte para nota 💪)
+Logs (CloudWatch)
+Métricas
+Alertas
+🏗️ Arquitetura final (visão geral)
+GitHub
+   ↓
+GitHub Actions (CI/CD)
+   ↓
+Docker Image (Registry)
+   ↓
+AWS
+ ├── EC2 (App Node.js)
+ └── RDS (MySQL)
+🚀 Próximos passos (o que te recomendo fazer já)
+Criar Dockerfile
+Criar pipeline básico (build + docker)
+Subir imagem para Docker Hub
+Criar EC2 manualmente
+Correr container lá dentro
+Depois → Terraform para automatizar tudo
+💡 Melhorias futuras
+Autenticação com JWT (já tens base)
+Testes automatizados (Jest)
+Load balancer (ALB)
+HTTPS (Let's Encrypt ou ACM)
+Escalabilidade (ECS / Kubernetes)
