@@ -1,0 +1,186 @@
+lfoa@lfoa-Legion-5-15ACH6H:~/Desktop/Documentacao-DevOps$ sudo apparmor_parser -R /etc/apparmor.d/hostname
+lfoa@lfoa-Legion-5-15ACH6H:~/Desktop/Documentacao-DevOps$ sudo aa-status | grep -w hostname
+lfoa@lfoa-Legion-5-15ACH6H:~/Desktop/Documentacao-DevOps$ minikube delete --all --purge
+W1018 12:16:34.187968   38190 main.go:294] Unable to resolve the current Docker CLI context "default": context "default": context not found: open /home/lfoa/.docker/contexts/meta/37a8eec1ce19687d132fe29051dca629d164e2c4958ba141d5f4133a33f0688f/meta.json: no such file or directory
+W1018 12:16:34.188012   38190 main.go:295] Try running `docker context use default` to resolve the above error
+🔥  Deleting "minikube" in docker ...
+🔥  Removing /home/lfoa/.minikube/machines/minikube ...
+💀  Removed all traces of the "minikube" cluster.
+🔥  Successfully deleted all profiles
+💀  Successfully purged minikube directory located at - [/home/lfoa/.minikube]
+📌  Kicbase images have not been deleted. To delete images run:
+    ▪ docker rmi gcr.io/k8s-minikube/kicbase:v0.0.50 gcr.io/k8s-minikube/kicbase:<none>
+lfoa@lfoa-Legion-5-15ACH6H:~/Desktop/Documentacao-DevOps$ minikube start --driver=docker
+W1018 12:16:40.383309   39107 main.go:294] Unable to resolve the current Docker CLI context "default": context "default": context not found: open /home/lfoa/.docker/contexts/meta/37a8eec1ce19687d132fe29051dca629d164e2c4958ba141d5f4133a33f0688f/meta.json: no such file or directory
+W1018 12:16:40.383353   39107 main.go:295] Try running `docker context use default` to resolve the above error
+😄  minikube v1.38.1 on Ubuntu 26.04
+✨  Using the docker driver based on user configuration
+🎉  minikube 1.39.0 is available! Download it: https://github.com/kubernetes/minikube/releases/tag/v1.39.0
+💡  To disable this notice, run: 'minikube config set WantUpdateNotification false'
+
+❗  Starting v1.39.0, minikube will default to "containerd" container runtime. See #21973 for more info.
+📌  Using Docker driver with root privileges
+👍  Starting "minikube" primary control-plane node in "minikube" cluster
+🚜  Pulling base image v0.0.50 ...
+💾  Downloading Kubernetes v1.35.1 preload ...
+    > preloaded-images-k8s-v18-v1...:  272.45 MiB / 272.45 MiB  100.00% 29.73 M
+    > gcr.io/k8s-minikube/kicbase...:  519.58 MiB / 519.58 MiB  100.00% 32.58 M
+🔥  Creating docker container (CPUs=2, Memory=3800MB) ...
+🐳  Preparing Kubernetes v1.35.1 on Docker 29.2.1 ...
+🔗  Configuring bridge CNI (Container Networking Interface) ...
+🔎  Verifying Kubernetes components...
+    ▪ Using image gcr.io/k8s-minikube/storage-provisioner:v5
+🌟  Enabled addons: storage-provisioner, default-storageclass
+
+❗  /usr/local/bin/kubectl is version 1.37.0, which may have incompatibilities with Kubernetes 1.35.1.
+    ▪ Want kubectl v1.35.1? Try 'minikube kubectl -- get pods -A'
+🏄  Done! kubectl is now configured to use "minikube" cluster and "default" namespace by default
+lfoa@lfoa-Legion-5-15ACH6H:~/Desktop/Documentacao-DevOps$ k get pods
+No resources found in default namespace.
+lfoa@lfoa-Legion-5-15ACH6H:~/Desktop/Documentacao-DevOps$ k apply -f deployment.yaml
+error: the path "deployment.yaml" does not exist
+lfoa@lfoa-Legion-5-15ACH6H:~/Desktop/Documentacao-DevOps$ cd Kubernetes/
+lfoa@lfoa-Legion-5-15ACH6H:~/Desktop/Documentacao-DevOps/Kubernetes$ k apply -f deployment.yaml
+deployment.apps/my-deployment created
+lfoa@lfoa-Legion-5-15ACH6H:~/Desktop/Documentacao-DevOps/Kubernetes$ k get pods
+NAME                             READY   STATUS              RESTARTS   AGE
+my-deployment-57f7447f58-6n8pb   0/1     ContainerCreating   0          4s
+my-deployment-57f7447f58-rh69q   0/1     ContainerCreating   0          4s
+my-deployment-57f7447f58-vv744   0/1     ContainerCreating   0          4s
+lfoa@lfoa-Legion-5-15ACH6H:~/Desktop/Documentacao-DevOps/Kubernetes$ k get pods
+NAME                             READY   STATUS    RESTARTS   AGE
+my-deployment-57f7447f58-6n8pb   1/1     Running   0          7s
+my-deployment-57f7447f58-rh69q   1/1     Running   0          7s
+my-deployment-57f7447f58-vv744   1/1     Running   0          7s
+lfoa@lfoa-Legion-5-15ACH6H:~/Desktop/Documentacao-DevOps/Kubernetes$ k get deployment -o wide
+NAME            READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS     IMAGES         SELECTOR
+my-deployment   3/3     3            3           23s   my-container   nginx:latest   tier=my-app
+lfoa@lfoa-Legion-5-15ACH6H:~/Desktop/Documentacao-DevOps/Kubernetes$ k describe deployment my-deployment
+Name:                   my-deployment
+Namespace:              default
+CreationTimestamp:      Sun, 18 Oct 2026 12:18:43 +0100
+Labels:                 tier=my-app
+Annotations:            deployment.kubernetes.io/revision: 1
+Selector:               tier=my-app
+Replicas:               3 desired | 3 updated | 3 total | 3 available | 0 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  25% max unavailable, 25% max surge
+Pod Template:
+  Labels:  tier=my-app
+  Containers:
+   my-container:
+    Image:         nginx:latest
+    Port:          80/TCP
+    Host Port:     0/TCP
+    Environment:   <none>
+    Mounts:        <none>
+  Volumes:         <none>
+  Node-Selectors:  <none>
+  Tolerations:     <none>
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Available      True    MinimumReplicasAvailable
+  Progressing    True    NewReplicaSetAvailable
+OldReplicaSets:  <none>
+NewReplicaSet:   my-deployment-57f7447f58 (3/3 replicas created)
+Events:
+  Type    Reason             Age   From                   Message
+  ----    ------             ----  ----                   -------
+  Normal  ScalingReplicaSet  47s   deployment-controller  Scaled up replica set my-deployment-57f7447f58 from 0 to 3
+lfoa@lfoa-Legion-5-15ACH6H:~/Desktop/Documentacao-DevOps/Kubernetes$ k apply -f deployment.yaml
+error: error parsing deployment.yaml: error converting YAML to JSON: yaml: line 19: mapping values are not allowed in this context
+lfoa@lfoa-Legion-5-15ACH6H:~/Desktop/Documentacao-DevOps/Kubernetes$ k apply -f deployment.yaml
+deployment.apps/my-deployment configured
+lfoa@lfoa-Legion-5-15ACH6H:~/Desktop/Documentacao-DevOps/Kubernetes$ k get deployment -o wide
+NAME            READY   UP-TO-DATE   AVAILABLE   AGE     CONTAINERS     IMAGES       SELECTOR
+my-deployment   3/3     3            3           2m51s   my-container   nginx:1.31   tier=my-app
+lfoa@lfoa-Legion-5-15ACH6H:~/Desktop/Documentacao-DevOps/Kubernetes$ k get pods
+NAME                             READY   STATUS    RESTARTS   AGE
+my-deployment-85d9b48f8b-862c5   1/1     Running   0          4s
+my-deployment-85d9b48f8b-8nnq2   1/1     Running   0          6s
+my-deployment-85d9b48f8b-phb8v   1/1     Running   0          8s
+lfoa@lfoa-Legion-5-15ACH6H:~/Desktop/Documentacao-DevOps/Kubernetes$ k get namespaces
+NAME              STATUS   AGE
+default           Active   5m22s
+kube-node-lease   Active   5m22s
+kube-public       Active   5m22s
+kube-system       Active   5m22s
+lfoa@lfoa-Legion-5-15ACH6H:~/Desktop/Documentacao-DevOps/Kubernetes$ k create namespace dev
+namespace/dev created
+lfoa@lfoa-Legion-5-15ACH6H:~/Desktop/Documentacao-DevOps/Kubernetes$ k get namespaces
+NAME              STATUS   AGE
+default           Active   5m34s
+dev               Active   1s
+kube-node-lease   Active   5m34s
+kube-public       Active   5m34s
+kube-system       Active   5m34s
+lfoa@lfoa-Legion-5-15ACH6H:~/Desktop/Documentacao-DevOps/Kubernetes$ k get pods -n kube-system
+NAME                               READY   STATUS    RESTARTS        AGE
+coredns-7d764666f9-k8jw8           1/1     Running   0               5m44s
+etcd-minikube                      1/1     Running   0               5m50s
+kube-apiserver-minikube            1/1     Running   0               5m50s
+kube-controller-manager-minikube   1/1     Running   0               5m50s
+kube-proxy-4wtgj                   1/1     Running   0               5m44s
+kube-scheduler-minikube            1/1     Running   0               5m50s
+storage-provisioner                1/1     Running   1 (5m14s ago)   5m48s
+lfoa@lfoa-Legion-5-15ACH6H:~/Desktop/Documentacao-DevOps/Kubernetes$ k get pods -A
+NAMESPACE     NAME                               READY   STATUS    RESTARTS        AGE
+default       my-deployment-85d9b48f8b-862c5     1/1     Running   0               106s
+default       my-deployment-85d9b48f8b-8nnq2     1/1     Running   0               108s
+default       my-deployment-85d9b48f8b-phb8v     1/1     Running   0               110s
+kube-system   coredns-7d764666f9-k8jw8           1/1     Running   0               5m58s
+kube-system   etcd-minikube                      1/1     Running   0               6m4s
+kube-system   kube-apiserver-minikube            1/1     Running   0               6m4s
+kube-system   kube-controller-manager-minikube   1/1     Running   0               6m4s
+kube-system   kube-proxy-4wtgj                   1/1     Running   0               5m58s
+kube-system   kube-scheduler-minikube            1/1     Running   0               6m4s
+kube-system   storage-provisioner                1/1     Running   1 (5m28s ago)   6m2s
+lfoa@lfoa-Legion-5-15ACH6H:~/Desktop/Documentacao-DevOps/Kubernetes$ k apply -f deployment.yaml -n dev
+deployment.apps/my-deployment created
+lfoa@lfoa-Legion-5-15ACH6H:~/Desktop/Documentacao-DevOps/Kubernetes$ k get pods -A
+NAMESPACE     NAME                               READY   STATUS    RESTARTS        AGE
+default       my-deployment-85d9b48f8b-862c5     1/1     Running   0               2m13s
+default       my-deployment-85d9b48f8b-8nnq2     1/1     Running   0               2m15s
+default       my-deployment-85d9b48f8b-phb8v     1/1     Running   0               2m17s
+dev           my-deployment-5f77d84b64-g26xq     1/1     Running   0               5s
+dev           my-deployment-5f77d84b64-j7npt     1/1     Running   0               5s
+dev           my-deployment-5f77d84b64-jt9p6     1/1     Running   0               5s
+kube-system   coredns-7d764666f9-k8jw8           1/1     Running   0               6m25s
+kube-system   etcd-minikube                      1/1     Running   0               6m31s
+kube-system   kube-apiserver-minikube            1/1     Running   0               6m31s
+kube-system   kube-controller-manager-minikube   1/1     Running   0               6m31s
+kube-system   kube-proxy-4wtgj                   1/1     Running   0               6m25s
+kube-system   kube-scheduler-minikube            1/1     Running   0               6m31s
+kube-system   storage-provisioner                1/1     Running   1 (5m55s ago)   6m29s
+lfoa@lfoa-Legion-5-15ACH6H:~/Desktop/Documentacao-DevOps/Kubernetes$ k get pods -A
+NAMESPACE     NAME                               READY   STATUS    RESTARTS       AGE
+default       my-deployment-85d9b48f8b-862c5     1/1     Running   0              2m23s
+default       my-deployment-85d9b48f8b-8nnq2     1/1     Running   0              2m25s
+default       my-deployment-85d9b48f8b-phb8v     1/1     Running   0              2m27s
+dev           my-deployment-5f77d84b64-g26xq     1/1     Running   0              15s
+dev           my-deployment-5f77d84b64-j7npt     1/1     Running   0              15s
+dev           my-deployment-5f77d84b64-jt9p6     1/1     Running   0              15s
+kube-system   coredns-7d764666f9-k8jw8           1/1     Running   0              6m35s
+kube-system   etcd-minikube                      1/1     Running   0              6m41s
+kube-system   kube-apiserver-minikube            1/1     Running   0              6m41s
+kube-system   kube-controller-manager-minikube   1/1     Running   0              6m41s
+kube-system   kube-proxy-4wtgj                   1/1     Running   0              6m35s
+kube-system   kube-scheduler-minikube            1/1     Running   0              6m41s
+kube-system   storage-provisioner                1/1     Running   1 (6m5s ago)   6m39s
+lfoa@lfoa-Legion-5-15ACH6H:~/Desktop/Documentacao-DevOps/Kubernetes$ k delete namespace dev
+namespace "dev" deleted
+lfoa@lfoa-Legion-5-15ACH6H:~/Desktop/Documentacao-DevOps/Kubernetes$ k get pods -A
+NAMESPACE     NAME                               READY   STATUS    RESTARTS        AGE
+default       my-deployment-85d9b48f8b-862c5     1/1     Running   0               2m57s
+default       my-deployment-85d9b48f8b-8nnq2     1/1     Running   0               2m59s
+default       my-deployment-85d9b48f8b-phb8v     1/1     Running   0               3m1s
+kube-system   coredns-7d764666f9-k8jw8           1/1     Running   0               7m9s
+kube-system   etcd-minikube                      1/1     Running   0               7m15s
+kube-system   kube-apiserver-minikube            1/1     Running   0               7m15s
+kube-system   kube-controller-manager-minikube   1/1     Running   0               7m15s
+kube-system   kube-proxy-4wtgj                   1/1     Running   0               7m9s
+kube-system   kube-scheduler-minikube            1/1     Running   0               7m15s
+kube-system   storage-provisioner                1/1     Running   1 (6m39s ago)   7m13s
+lfoa@lfoa-Legion-5-15ACH6H:~/Desktop/Documentacao-DevOps/Kubernetes$ 
